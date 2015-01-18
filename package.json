@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bestander/deploy-azure-cdn.git"
+    "url": "git://github.com/rwatgg/deploy-azure-cdn.git"
   },
   "keywords": [
     "azure",
@@ -19,12 +19,12 @@
   "author": "Konstantin Raev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bestander/deploy-azure-cdn/issues"
+    "url": ""
   },
   "scripts": {
     "test": "jest"
   },
-  "homepage": "https://github.com/bestander/deploy-azure-cdn",
+  "homepage": "",
   "dependencies": {
     "async": "^0.9.0",
     "azure-storage": "^0.3.3",
