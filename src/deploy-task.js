@@ -171,16 +171,22 @@ module.exports = function deploy(opt, files, loggerCallback, cb) {
         then(function () {
             return emptyAzureCdnTargetFolder(blobService, options, loggerCallback);
         });
+		
     // allow deleting files without anything to upload
     if (files.length === 0) {
         createFolderAndClearPromise.then(cb, cb);
         return;
     }
+	
     async.eachLimit(files, options.concurrentUploadThreads, function (file, eachCallback) {
+	
         var relativePath = path.relative(file.cwd, file.path);
         var destFileName = path.join(options.folder, relativePath);
         var sourceFile = file.path;
         var metadata = clone(options.metadata);
+		
+		destFileName = options.folder + "\\" + destFileName.substring(destFileName.lastIndexOf("\\")+1);
+		
         metadata.contentType = mime.lookup(sourceFile);
         if (options.zip) {
             createFolderAndClearPromise.then(function () {
