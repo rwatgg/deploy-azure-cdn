@@ -185,7 +185,12 @@ module.exports = function deploy(opt, files, loggerCallback, cb) {
         var sourceFile = file.path;
         var metadata = clone(options.metadata);
 		
-		destFileName = options.folder + "\\" + destFileName.substring(destFileName.lastIndexOf("\\")+1);
+        var isWin = /^win/.test(process.platform)
+
+        if(isWin)
+            destFileName = options.folder + "\\" + destFileName.substring(destFileName.lastIndexOf("\\")+1);
+        else
+            destFileName = options.folder + "/" + destFileName.substring(destFileName.lastIndexOf("/")+1);
 		
         metadata.contentType = mime.lookup(sourceFile);
         if (options.zip) {
